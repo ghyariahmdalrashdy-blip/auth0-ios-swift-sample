@@ -152,9 +152,11 @@ struct LoginView: View {
                                                 ),
                                                 loginViewModel: viewModel
                                             )
-                                        } else {
-                                            Text("Challenge for \(authenticator.type) is not yet implemented")
-                                                .padding()
+                                        } else if authenticator.type == "recovery-code" {
+                                            ChallengeRecoveryCodeView(
+                                                viewModel: ChallengeRecoveryCodeViewModel(mfaToken: viewModel.mfaToken),
+                                                loginViewModel: viewModel
+                                            )
                                         }
                                     } label: {
                                         Label {
